@@ -93,4 +93,23 @@ if (bookingList) {
         if(confirm("Удалить?")) { await deleteDoc(doc(db, "bookings", id)); loadBookings(); }
     };
     loadBookings();
+
+}
+
+window.showDetails = (title, desc) => {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDesc').innerText = desc;
+    document.getElementById('serviceModal').style.display = 'flex';
+};
+
+window.closeModal = () => {
+    document.getElementById('serviceModal').style.display = 'none';
+};
+
+// Закрытие модалки кликом по фону
+window.onclick = (event) => {
+    const modal = document.getElementById('serviceModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
